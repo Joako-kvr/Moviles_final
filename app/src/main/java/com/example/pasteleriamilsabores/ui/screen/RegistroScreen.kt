@@ -25,18 +25,25 @@ import com.example.pasteleriamilsabores.ui.components.BotonLogin
 import com.example.pasteleriamilsabores.ui.components.CampoTexto
 import com.example.pasteleriamilsabores.ui.components.TituloText
 import com.example.pasteleriamilsabores.viewmodel.LoginViewModel
+import com.example.pasteleriamilsabores.viewmodel.SesionViewModel
+import com.example.pasteleriamilsabores.viewmodel.UsuarioSesion
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 //@Preview
 @Composable
-fun RegistroScreen(navController: NavController){
+fun RegistroScreen(
+    navController: NavController,
+    sesionViewModel: SesionViewModel
+){
 
     var nombre by remember{ mutableStateOf("") }
     var correo by remember{ mutableStateOf("") }
     var contrasena by remember{ mutableStateOf("") }
-    //var nuevacContrasena by remember{ mutableStateOf("") }
+    var repetirContrasena by remember{ mutableStateOf("") }
+    var mensajeError by remember { mutableStateOf("") }
 
     val viewModel: LoginViewModel= viewModel()
 
@@ -78,9 +85,9 @@ fun RegistroScreen(navController: NavController){
             Spacer(modifier = Modifier.height(16.dp))
 
             CampoTexto(
-                valor = contrasena,
-                onValorCambio = {contrasena = it},
-                etiqueta = "Contraseña"
+                valor = repetirContrasena,
+                onValorCambio = { repetirContrasena = it },
+                etiqueta = "Confirmar contraseña"
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -97,12 +104,47 @@ fun RegistroScreen(navController: NavController){
                 texto = "Registrarse",
                 onClickAccion = {
                     CoroutineScope(Dispatchers.IO).launch {
-                        val nuevoUsuario = Usuario(nombre = nombre, correo = correo, contrasena= contrasena)
-                        viewModel.registrousuario(nuevoUsuario)
-                        navController.navigate("home")
+
+
+                        if (contrasena != repetirContrasena) {
+                            withContext(Dispatchers.Main) {
+                                mensajeError = "Las contraseñas no coinciden"
+                            }
+                            return@launch
+                        }
+
+                        val nuevoUsuario = Usuario(
+                            nombre = nombre,
+                            correo = correo,
+                            contrasena = contrasena
+                        )
+
+                        val idGenerado = viewModel.registrousuario(nuevoUsuario)
+                        val usuarioCreado = viewModel.obtenerUsuarioPorId(idGenerado.toInt())
+
+                        sesionViewModel.setUsuario(
+                            UsuarioSesion(
+                                id = usuarioCreado.id,
+                                nombre = usuarioCreado.nombre,
+                                correo = usuarioCreado.correo,
+                                contrasena = usuarioCreado.contrasena
+                            )
+                        )
+
+                        withContext(Dispatchers.Main) {
+                            navController.navigate("home")
+                        }
                     }
                 }
             )
+
+            if (mensajeError.isNotEmpty()) {
+                Text(
+                    text = mensajeError,
+                    color = Color.Red,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+            }
 
             Spacer(modifier = Modifier.height(16.dp))
 

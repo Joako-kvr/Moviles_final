@@ -24,7 +24,7 @@ fun AppNavigation(){
         composable ("splash"){ SplashScreen(navController = navController) }
         composable ("login"){ LoginScreen(navController = navController, sesionViewModel = sesionViewModel) }
         composable ("home"){ HomeScreen(navController = navController, sesionViewModel = sesionViewModel) }
-        composable ("registro"){ RegistroScreen(navController = navController) }
+        composable ("registro"){ RegistroScreen(navController = navController, sesionViewModel = sesionViewModel) }
         composable ("carrito"){ CarritoScreen(navController = navController, sesionViewModel = sesionViewModel) }
         composable ("perfil"){ PerfilScreen(navController = navController, sesionViewModel = sesionViewModel) }
         composable ("editarperfil"){ EditarPerfilScreen(navController = navController, sesionViewModel = sesionViewModel) }

@@ -11,7 +11,7 @@ import com.example.pasteleriamilsabores.model.Usuario
 interface UsuarioDao {
 
     @Insert
-    suspend fun insertar(usuario: Usuario)
+    suspend fun insertar(usuario: Usuario): Long
 
     @Update
     suspend fun actualizar(usuario: Usuario)
@@ -23,7 +23,7 @@ interface UsuarioDao {
     suspend fun obtenerTodos(): List<Usuario>
 
     @Query("SELECT * FROM Usuario WHERE id = :id")
-    suspend fun obtenerPorId(id: Int): Usuario?
+    suspend fun obtenerPorId(id: Int): Usuario
 
     @Query("SELECT * FROM Usuario WHERE correo = :correo")
     suspend fun obtenerPorCorreo(correo: String): Usuario?

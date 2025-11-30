@@ -35,6 +35,7 @@ import com.example.pasteleriamilsabores.ui.components.TituloText
 import com.example.pasteleriamilsabores.ui.theme.MilSaboresFont
 import com.example.pasteleriamilsabores.viewmodel.ProfileViewModel
 import com.example.pasteleriamilsabores.viewmodel.SesionViewModel
+import com.example.pasteleriamilsabores.viewmodel.UsuarioSesion
 
 
 @Composable
@@ -51,7 +52,7 @@ fun EditarPerfilScreen(
     var correo by remember { mutableStateOf("") }
     var contrasena by remember { mutableStateOf("") }
     var repetirContrasena by remember { mutableStateOf("") }
-
+    var mensajeError by remember { mutableStateOf("") }
 
     LaunchedEffect(usuarioSesion?.id) {
         val id = usuarioSesion?.id
@@ -113,8 +114,38 @@ fun EditarPerfilScreen(
 
             Spacer(modifier = Modifier.height(2.dp))
 
+            if (mensajeError.isNotEmpty()) {
+                Text(
+                    text = mensajeError,
+                    color = Color.Red,
+                    fontSize = 14.sp
+                )
+            }
+
             Button(
-                onClick = { /* Aquí luego agregamos guardar cambios */ },
+                onClick = {
+                    usuario?.let { usuarioBD ->
+                        if (contrasena == repetirContrasena) {
+                            val usuarioActualizado = usuarioBD.copy(
+                                nombre = nombre,
+                                correo = correo,
+                                contrasena = contrasena
+                            )
+                            profileViewModel.actualizarUsuario(usuarioActualizado)
+                            sesionViewModel.setUsuario(
+                                UsuarioSesion(
+                                    id = usuarioActualizado.id,
+                                    nombre = usuarioActualizado.nombre,
+                                    correo = usuarioActualizado.correo,
+                                    contrasena = usuarioActualizado.contrasena
+                                )
+                            )
+                            navController.navigate("home")
+                        } else {
+                            mensajeError = "Las contraseñas no coinciden"
+                        }
+                    }
+                },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF8B4513)
                 )
@@ -123,7 +154,7 @@ fun EditarPerfilScreen(
             }
 
             Button(
-                onClick = { navController.navigate("login") },
+                onClick = { navController.navigate("editarperfil") },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF8B4513))
             ) {
                 Text("Deshacer Cambios")

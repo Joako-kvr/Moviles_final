@@ -14,7 +14,11 @@ class LoginViewModel(application: Application): AndroidViewModel(application) {
         return usuarioDao.login(nombre, contrasena)
     }
 
-    suspend fun registrousuario(usuario: Usuario) {
-        usuarioDao.insertar(usuario)
+    suspend fun registrousuario(usuario: Usuario): Long {
+        return usuarioDao.insertar(usuario)
+    }
+
+    suspend fun obtenerUsuarioPorId(id: Int): Usuario {
+        return usuarioDao.obtenerPorId(id)
     }
 }
