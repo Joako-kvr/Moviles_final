@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
@@ -70,7 +71,7 @@ fun LoginScreen(navController: NavController,
             Spacer(modifier = Modifier.height(16.dp))
 
 
-            TituloText("Iniciar sesion")
+            TituloText("Iniciar Sesión")
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -135,7 +136,8 @@ fun LoginScreen(navController: NavController,
             Spacer(modifier = Modifier.height(16.dp))
 
             BotonLogin(
-                "Registrarse",
+                texto = "Registrarse",
+                modifier = Modifier.testTag("btnIrRegistro"),
                 onClickAccion = {
                     navController.navigate("registro")
                 }

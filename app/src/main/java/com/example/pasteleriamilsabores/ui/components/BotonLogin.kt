@@ -18,10 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun BotonLogin(texto: String, onClickAccion: () -> Unit) {
+fun BotonLogin(texto: String, onClickAccion: () -> Unit, modifier: Modifier = Modifier) {
     Button(
         onClick = onClickAccion,
-        modifier = Modifier
+        modifier = modifier
             .width(200.dp)
             .height(50.dp)
             .background(
