@@ -18,7 +18,7 @@ class PerfilScreenTest {
         composeGetRule.setContent {
             PerfilScreen(navController = rememberNavController(), sesionViewModel = viewModel())
         }
-        composeGetRule.onNodeWithText(text = "Mil Sabores").assertIsDisplayed()
+        composeGetRule.onNodeWithText(text = "Mi Perfil").assertIsDisplayed()
     }
 
 

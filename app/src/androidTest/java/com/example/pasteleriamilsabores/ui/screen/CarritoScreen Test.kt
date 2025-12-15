@@ -18,7 +18,7 @@ class CarritoScreenTest {
         composeGetRule.setContent {
             CarritoScreen(navController = rememberNavController(), sesionViewModel = viewModel())
         }
-        composeGetRule.onNodeWithText(text = "Mil Sabores").assertIsDisplayed()
+        composeGetRule.onNodeWithText(text = "Mi Carrito").assertIsDisplayed()
     }
 
 

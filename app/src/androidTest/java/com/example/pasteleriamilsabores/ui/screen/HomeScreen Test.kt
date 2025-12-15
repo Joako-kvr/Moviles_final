@@ -18,7 +18,7 @@ class HomeScreenTest {
         composeGetRule.setContent {
             HomeScreen(navController = rememberNavController(), sesionViewModel = viewModel())
         }
-        composeGetRule.onNodeWithText(text = "Mil Sabores").assertIsDisplayed()
+        composeGetRule.onNodeWithText(text = "Mil Sabores para ti...").assertIsDisplayed()
     }
 
 

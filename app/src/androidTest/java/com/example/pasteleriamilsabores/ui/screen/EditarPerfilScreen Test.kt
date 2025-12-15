@@ -18,7 +18,7 @@ class EditarPerfilScreenTest {
         composeGetRule.setContent {
             EditarPerfilScreen(navController = rememberNavController(), sesionViewModel = viewModel())
         }
-        composeGetRule.onNodeWithText(text = "Mil Sabores").assertIsDisplayed()
+        composeGetRule.onNodeWithText(text = "Mi Perfil").assertIsDisplayed()
     }
 
 
