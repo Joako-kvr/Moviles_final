@@ -1,6 +1,6 @@
 package com.example.pasteleriamilsabores.remote
 
-import com.example.pasteleriamilsabores.model.ApiService
+import com.example.pasteleriamilsabores.remote.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

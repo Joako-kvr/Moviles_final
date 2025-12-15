@@ -12,6 +12,7 @@ import com.example.pasteleriamilsabores.ui.screen.LoginScreen
 import com.example.pasteleriamilsabores.ui.screen.PerfilScreen
 import com.example.pasteleriamilsabores.ui.screen.RegistroScreen
 import com.example.pasteleriamilsabores.ui.screen.SplashScreen
+import com.example.pasteleriamilsabores.ui.screen.PostScreen
 import com.example.pasteleriamilsabores.viewmodel.SesionViewModel
 
 
@@ -28,6 +29,7 @@ fun AppNavigation(){
         composable ("carrito"){ CarritoScreen(navController = navController, sesionViewModel = sesionViewModel) }
         composable ("perfil"){ PerfilScreen(navController = navController, sesionViewModel = sesionViewModel) }
         composable ("editarperfil"){ EditarPerfilScreen(navController = navController, sesionViewModel = sesionViewModel) }
+        composable ("post"){ PostScreen(navController = navController) }
 
     }
 }

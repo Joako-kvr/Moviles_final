@@ -1,4 +1,4 @@
-package com.example.pasteleriamilsabores.model
+package com.example.pasteleriamilsabores.remote
 
 import com.example.pasteleriamilsabores.model.Post
 import retrofit2.http.GET

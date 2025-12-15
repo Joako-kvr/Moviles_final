@@ -143,6 +143,15 @@ fun LoginScreen(navController: NavController,
                 }
             )
 
+            Spacer(modifier = Modifier.height(16.dp))
+
+            BotonLogin(
+                texto = "Prueba Api",
+                onClickAccion = {
+                    navController.navigate("post")
+                }
+            )
+
 
         }
     }
