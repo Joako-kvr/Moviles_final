@@ -85,18 +85,19 @@ fun RegistroScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             CampoTexto(
-                valor = repetirContrasena,
-                onValorCambio = { repetirContrasena = it },
-                etiqueta = "Confirmar contraseña"
+                valor = contrasena,
+                onValorCambio = {contrasena = it},
+                etiqueta = "Contraseña"
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             CampoTexto(
-                valor = contrasena,
-                onValorCambio = {contrasena = it},
-                etiqueta = "Confirmar contraseña"
+                valor = repetirContrasena,
+                onValorCambio = { repetirContrasena = it },
+                etiqueta = "Confirmar Contraseña"
             )
+
 
             Spacer(modifier = Modifier.height(16.dp))
 

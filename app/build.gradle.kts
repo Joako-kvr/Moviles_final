@@ -7,6 +7,10 @@ plugins {
 }
 
 android {
+
+
+
+
     namespace = "com.example.pasteleriamilsabores"
     compileSdk = 36
 
@@ -47,6 +51,15 @@ android {
         animationsDisabled = true
     }
 
+    packaging {
+        resources {
+            excludes += setOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+                "META-INF/NOTICE.md"
+            )
+        }
+    }
 }
 
 dependencies {
@@ -87,5 +100,20 @@ dependencies {
     // Para usar Navigation en pruebas
     androidTestImplementation("androidx.navigation:navigation-testing:2.7.5")
 
+    // para test de corrutinas
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("junit:junit:4.13.2")
+
+    //mockk
+
+    testImplementation("io.mockk:mockk:1.13.10")
+    androidTestImplementation("io.mockk:mockk-android:1.13.10")
+
+    //api
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 
 }

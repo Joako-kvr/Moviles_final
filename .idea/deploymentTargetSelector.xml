@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="HomeScreen_clickBoton_irRegistro()">
+      <SelectionState runConfigName="SplashViewModelTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Registro_MuestraTitulo()">
+      <SelectionState runConfigName="splash_delay_inline()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="LoginScreen_clickBoton_irRegistro()">
+      <SelectionState runConfigName="contrasenas_no_coinciden_test()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="loginScreen_clickBoton_irRegistro()">
+      <SelectionState runConfigName="MainActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="LoginScreenTest">
+      <SelectionState runConfigName="Carrito_MuestraTitulo()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

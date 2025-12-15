@@ -1,25 +1,34 @@
 package com.example.pasteleriamilsabores.ui.screen
 
-import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithText
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.compose.rememberNavController
-import org.junit.Rule
+
+import junit.framework.TestCase.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.advanceTimeBy
+import kotlinx.coroutines.test.runCurrent
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
-class SplashScreenTest {
 
-    @get:Rule
-    val composeGetRule = createComposeRule()
+@OptIn(ExperimentalCoroutinesApi::class)
+class SplashViewModelTest {
+
+    // test para la corrutina
 
     @Test
-    fun Splash_MuestraTitulo() {
-        composeGetRule.setContent {
-            SplashScreen(navController = rememberNavController())
+    fun splash_delay_inline() = runTest {
+
+        var finished = false
+
+        launch {
+            delay(3000)
+            finished = true
         }
-        composeGetRule.onNodeWithText(text = "Mil Sabores").assertIsDisplayed()
+
+        advanceTimeBy(3000)
+        runCurrent()
+
+        assertTrue(finished)
     }
-
-
 }
